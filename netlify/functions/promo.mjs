@@ -53,6 +53,11 @@ async function callFireworks(apiKey, model, products, percent) {
   const parsed = parsePromo(data.choices?.[0]?.message?.content ?? '');
 
   if (!parsed) throw new Error('AI output could not be parsed');
+
+  if (!parsed.headline) parsed.headline = `Save ${percent}% Today`;
+  if (!parsed.subheadline) parsed.subheadline = `${percent}% off selected products. Limited stock.`;
+  if (!parsed.cta) parsed.cta = 'Shop Now';
+
   return parsed;
 }
 

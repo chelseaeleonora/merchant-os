@@ -35,7 +35,9 @@ Serve the `public` folder with any static server, e.g.:
 
 ```bash
 npx serve public
+```
 
-WebMCP Testing
-Use Chrome with chrome://flags/#enable-webmcp-testing enabled,
+## WebMCP Testing
+
+Use Chrome with `chrome://flags/#enable-webmcp-testing` enabled,
 or any browser that supports the Model Context Protocol for the web.

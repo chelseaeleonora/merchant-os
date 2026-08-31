@@ -38,7 +38,7 @@ async function callFireworks(apiKey, model, products, percent) {
     body: JSON.stringify({
       model,
       messages: [
-        { role: 'system', content: 'You are a promo copywriter. Reply with exactly 3 lines: headline:, subheadline:, cta:' },
+        { role: 'system', content: 'You are a promo copywriter. Reply with exactly 3 lines, no markdown. HEADLINE: max 6 words. SUBHEADLINE: max 12 words. CTA: max 3 words.' },
         { role: 'user', content: `Products: ${JSON.stringify(products)}. Discount: ${percent}%. English. Max 25 words.` }
       ],
       max_tokens: 70,

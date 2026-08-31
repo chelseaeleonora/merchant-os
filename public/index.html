@@ -1,1 +1,57 @@
-
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MerchantOS</title>
+<style>
+body{margin:0;font-family:system-ui,sans-serif;background:#0b1020;color:#e6e9f2}
+header{padding:20px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #232a44}
+h1{margin:0;font-size:22px}
+main{padding:20px;display:grid;gap:16px}
+section{border:1px solid #232a44;border-radius:12px;padding:16px}
+.controls{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+button{background:#182247;color:#e6e9f2;border:1px solid #35416f;border-radius:8px;padding:8px 12px;cursor:pointer}
+button:hover{border-color:#6171ff}
+table{width:100%;border-collapse:collapse}
+th,td{padding:8px;border-bottom:1px solid #232a44;text-align:left;font-size:14px}
+#promo-output,#test-result{background:#08101f;border:1px solid #232a44;border-radius:8px;padding:12px;min-height:40px;white-space:pre-wrap}
+.status{padding:6px 10px;border:1px solid #35416f;border-radius:999px;font-size:13px}
+</style>
+</head>
+<body>
+<header>
+<h1>MerchantOS</h1>
+<div id="webmcp-status" class="status">Checking WebMCP...</div>
+</header>
+<main>
+<section>
+<h2>Produk</h2>
+<div class="controls">
+<button id="btn-low-stock">Cari produk butuh promo</button>
+<button id="btn-discount">Apply diskon 15%</button>
+<button id="btn-promo">Buat promo</button>
+<button id="btn-reset">Reset data</button>
+</div>
+<table>
+<thead><tr><th>Nama</th><th>Kategori</th><th>Harga</th><th>Stok</th><th>Terjual 7 hari</th></tr></thead>
+<tbody id="product-body"></tbody>
+</table>
+</section>
+<section>
+<h2>Promo</h2>
+<div id="promo-output">Belum ada promo.</div>
+</section>
+<section>
+<h2>WebMCP Test</h2>
+<div class="controls">
+<button id="btn-test-search">Test search_inventory</button>
+<button id="btn-test-discount">Test apply_bulk_discount</button>
+<button id="btn-test-promo">Test generate_promo_copy</button>
+</div>
+<pre id="test-result"></pre>
+</section>
+</main>
+<script type="module" src="./assets/app.js"></script>
+</body>
+</html>

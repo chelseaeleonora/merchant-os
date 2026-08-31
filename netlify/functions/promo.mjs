@@ -41,7 +41,7 @@ async function callFireworks(apiKey, model, products, percent) {
         { role: 'system', content: 'You are a promo copywriter. Reply with exactly 3 lines, no markdown. HEADLINE: max 6 words. SUBHEADLINE: max 12 words. CTA: max 3 words.' },
         { role: 'user', content: `Products: ${JSON.stringify(products)}. Discount: ${percent}%. English. Max 25 words.` }
       ],
-      max_tokens: 70,
+      max_tokens: 200,
       temperature: 0.3,
       stream: false
     })
@@ -50,9 +50,10 @@ async function callFireworks(apiKey, model, products, percent) {
   if (!response.ok) throw new Error(`Fireworks HTTP ${response.status}`);
 
   const data = await response.json();
-  const parsed = parsePromo(data.choices?.[0]?.message?.content ?? '');
+  const text = data.choices?.[0]?.message?.content ?? '';
+  const parsed = parsePromo(text);
 
-  if (!parsed) throw new Error('AI output could not be parsed');
+  if (!parsed) throw new Error(`Unparsed AI output: ${JSON.stringify(text).slice(0, 300)}`);
 
   if (!parsed.headline) parsed.headline = `Save ${percent}% Today`;
   if (!parsed.subheadline) parsed.subheadline = `${percent}% off selected products. Limited stock.`;

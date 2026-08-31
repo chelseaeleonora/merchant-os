@@ -113,4 +113,23 @@ function bindButtons() {
 async function runTool(name, input) {
   const tool = TOOLS.find((t) => t.name === name);
 
-  if (!
+  if (!tool) {
+    const error = { ok: false, error: `Tool ${name} not found.` };
+    showTest(error);
+    return error;
+  }
+
+  try {
+    const result = await tool.execute(input);
+    showTest({ ok: true, tool: name, input, result });
+    return result;
+  } catch (error) {
+    const payload = { ok: false, tool: name, input, error: error.message };
+    showTest(payload);
+    return payload;
+  }
+}
+
+function showTest(value) {
+  testResult.textContent = JSON.stringify(value, null, 2);
+}

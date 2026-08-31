@@ -57,17 +57,24 @@ async function callFireworks(apiKey, model, products, percent) {
 }
 
 function parsePromo(text) {
-  const lines = String(text || '').split('\n').map((l) => l.trim()).filter(Boolean);
+  const lines = String(text || '')
+    .split('\n')
+    .map((l) => l.replace(/[*#_`>-]/g, '').trim())
+    .filter(Boolean);
 
   const getValue = (prefix) => {
     const line = lines.find((item) => item.toLowerCase().startsWith(prefix));
     if (!line) return '';
-    return line.slice(prefix.length).replace(/^:\s*/, '').trim();
+    return line.slice(prefix.length).replace(/^[:\-]\s*/, '').trim();
   };
 
-  const headline = getValue('headline');
-  const subheadline = getValue('subheadline');
-  const cta = getValue('cta');
+  let headline = getValue('headline');
+  let subheadline = getValue('subheadline');
+  let cta = getValue('cta');
+
+  if (!headline && lines[0]) headline = lines[0];
+  if (!subheadline && lines[1]) subheadline = lines[1];
+  if (!cta && lines[2]) cta = lines[2];
 
   if (!headline && !subheadline && !cta) return null;
   return { headline, subheadline, cta };

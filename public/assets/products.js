@@ -1,12 +1,12 @@
 const STORAGE_KEY = 'merchantos:products:v1';
 
 const INITIAL_PRODUCTS = [
-  { id: 'p1', name: 'Wireless Mouse', category: 'Aksesoris', price: 120000, original_price: 120000, stock: 82, sales_last_7_days: 3 },
-  { id: 'p2', name: 'USB-C Cable', category: 'Aksesoris', price: 35000, original_price: 35000, stock: 67, sales_last_7_days: 4 },
-  { id: 'p3', name: 'Mechanical Keyboard', category: 'Aksesoris', price: 650000, original_price: 650000, stock: 28, sales_last_7_days: 11 },
-  { id: 'p4', name: 'Laptop Stand', category: 'Peralatan', price: 275000, original_price: 275000, stock: 54, sales_last_7_days: 2 },
-  { id: 'p5', name: 'Webcam 1080p', category: 'Peralatan', price: 420000, original_price: 420000, stock: 12, sales_last_7_days: 8 },
-  { id: 'p6', name: 'Desk Lamp', category: 'Rumah', price: 150000, original_price: 150000, stock: 61, sales_last_7_days: 5 }
+  { id: 'p1', name: 'Wireless Mouse', category: 'Accessories', price: 120000, original_price: 120000, stock: 82, sales_last_7_days: 3 },
+  { id: 'p2', name: 'USB-C Cable', category: 'Accessories', price: 35000, original_price: 35000, stock: 67, sales_last_7_days: 4 },
+  { id: 'p3', name: 'Mechanical Keyboard', category: 'Accessories', price: 650000, original_price: 650000, stock: 28, sales_last_7_days: 11 },
+  { id: 'p4', name: 'Laptop Stand', category: 'Equipment', price: 275000, original_price: 275000, stock: 54, sales_last_7_days: 2 },
+  { id: 'p5', name: 'Webcam 1080p', category: 'Equipment', price: 420000, original_price: 420000, stock: 12, sales_last_7_days: 8 },
+  { id: 'p6', name: 'Desk Lamp', category: 'Home', price: 150000, original_price: 150000, stock: 61, sales_last_7_days: 5 }
 ];
 
 let products = loadProducts();

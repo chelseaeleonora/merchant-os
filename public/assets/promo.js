@@ -31,17 +31,8 @@ export async function generatePromo({ product_ids, discount_percent } = {}) {
     discount_percent: percent
   };
 
-  // Will point to the Render API later
-  const RENDER_API_URL = '';
-
-  if (!RENDER_API_URL) {
-    const mock = generatePromoMock({ items, percent });
-    document.dispatchEvent(new CustomEvent('webmcp:promo-changed', { detail: mock }));
-    return mock;
-  }
-
   try {
-    const response = await fetch(RENDER_API_URL, {
+    const response = await fetch('/api/promo', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
